@@ -1,1 +1,1 @@
-﻿# todo-app for helping your keep track of you daily tasks
+﻿# todo-app for helping you keep track of your daily tasks
