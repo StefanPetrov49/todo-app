@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% for task in all_tasks %}
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">{{ task.title }}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">{{ task.author }}</h6>
+                <p class="card-text">{{ task.description }}</p>
+                <p class="card-link">{{ task.created_at }}</p>
+                <a class="btn btn-danger" href="{% url 'complete task' task_id=task.pk %}" role="button">Undo</a>
+            </div>
+        </div>
+    {% empty %}
+        <center>
+            <iframe src="https://giphy.com/embed/Za7ZWOU0su5BC" width="471" height="480" frameBorder="0"
+                    class="giphy-embed" allowFullScreen></iframe>
+            <h1>You haven't completed any tasks yet!</h1>
+        </center>
+    {% endfor %}
+{% endblock %}

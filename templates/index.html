@@ -1,15 +1,27 @@
 {% extends 'base.html' %}
 {% block content %}
-    {% for task in all_tasks %}
-        <div class="card" style="width: 18rem;">
-            <div class="card-body">
-                <h5 class="card-title">{{ task.title }}</h5>
-                <h6 class="card-subtitle mb-2 text-muted">{{ task.author }}</h6>
-                <p class="card-text">{{ task.description }}</p>
-                <p class="card-link">{{ task.created_at }}</p>
-                <a class="btn btn-secondary" href="#" role="button">Edit</a>
-                <a class="btn btn-success" href="#" role="button">Completed</a>
+        {% if all_tasks %}
+            <p>
+            <form class="d-flex" role="search" method="post">
+                {{ search_form }}
+                {% csrf_token %}
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+            </p>
+        {% endif %}
+
+        {% for task in all_tasks %}
+            <p></p>
+            <div class="card" style="width: 18rem;">
+                <div class="card-body ms-2">
+                    <h5 class="card-title">{{ task.title }}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">{{ task.author }}</h6>
+                    <p class="card-text">{{ task.description }}</p>
+                    <p class="card-link">{{ task.created_at }}</p>
+                    <a class="btn btn-secondary" href="{% url 'edit task' task_id=task.pk %}" role="button">Edit</a>
+                    <a class="btn btn-success" href="{% url 'complete task' task_id=task.pk %}"
+                       role="button">Completed</a>
+                </div>
             </div>
-        </div>
-    {% endfor %}
+        {% endfor %}
 {% endblock %}

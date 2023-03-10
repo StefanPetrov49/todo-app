@@ -2,9 +2,14 @@
 {% block content %}
 
 <form action="{% url 'add task' %}" method="post">
-    {{ form.as_p }}
+    {{ form.title }}
+    <p></p>
+    {{ form.author }}
+    <p></p>
+    {{ form.description }}
     {% csrf_token %}
-    <input type="submit" value="Submit">
+    <p></p>
+    <input class="btn btn-success" type="submit" value="Submit">
 </form>
 
 <p>Click the "Submit" button.</p>
