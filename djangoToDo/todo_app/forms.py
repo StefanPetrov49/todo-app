@@ -6,11 +6,12 @@ from djangoToDo.todo_app.models import Task
 class TaskModel(forms.ModelForm):
     class Meta:
         model = Task
-        fields = ['title', 'author', 'description']
+        fields = ['title', 'author', 'description', 'start_time']
         labels = {
             'title': 'Title',
             'author': 'Author',
             'description': 'Description',
+            'start_time': 'Start time',
         }
         widgets = {
             'title': forms.TextInput(
@@ -27,6 +28,9 @@ class TaskModel(forms.ModelForm):
                 attrs={
                     'placeholder': 'Description...'
                 }
+            ),
+            'start_time': forms.DateInput(
+                attrs={'type': 'date'}
             ),
         }
 

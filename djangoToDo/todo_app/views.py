@@ -73,3 +73,12 @@ def completed_tasks(request):
         'all_tasks': all_tasks,
     }
     return render(request, 'completed-tasks.html', context)
+
+
+def details_task(request, task_id):
+    task = Task.objects.filter(pk=task_id).get()
+    context = {
+        'task': task,
+    }
+
+    return render(request, 'details-task.html', context)

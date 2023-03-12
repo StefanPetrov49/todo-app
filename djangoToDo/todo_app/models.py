@@ -27,6 +27,8 @@ class Task(models.Model):
         auto_now_add=True
     )
 
+    start_time = models.DateField()
+
     completed = models.BooleanField(
         default=False
     )
